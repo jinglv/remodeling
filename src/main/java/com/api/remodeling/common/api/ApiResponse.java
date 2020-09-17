@@ -28,11 +28,11 @@ public class ApiResponse<T> {
     /**
      * 构造函数
      *
-     * @param codeEnum 响应枚举内容
+     * @param apiCodeEnum 响应枚举内容
      */
-    public ApiResponse(ApiCodeEnum codeEnum, T data) {
-        this.code = codeEnum.getCode();
-        this.message = codeEnum.getMessage();
+    public ApiResponse(ApiCodeEnum apiCodeEnum, T data) {
+        this.code = apiCodeEnum.getCode();
+        this.message = apiCodeEnum.getMessage();
         this.data = data;
     }
 
@@ -54,8 +54,8 @@ public class ApiResponse<T> {
     /**
      * 业务成功返回代码,描述和返回参数
      */
-    public static <T> ApiResponse<T> success(ApiCodeEnum codeEnum, T data) {
-        if (codeEnum == null) {
+    public static <T> ApiResponse<T> success(ApiCodeEnum apiCodeEnum, T data) {
+        if (apiCodeEnum == null) {
             return success(data);
         }
         return new ApiResponse<T>(ApiCodeEnum.SUCCESS, data);
@@ -71,17 +71,17 @@ public class ApiResponse<T> {
     /**
      * 业务异常返回代码,描述和返回的参数
      */
-    public static <T> ApiResponse<T> failure(ApiCodeEnum codeEnum) {
-        return failure(codeEnum, null);
+    public static <T> ApiResponse<T> failure(ApiCodeEnum apiCodeEnum) {
+        return failure(apiCodeEnum, null);
     }
 
     /**
      * 业务异常返回业务代码，描述和返回的参数
      */
-    public static <T> ApiResponse<T> failure(ApiCodeEnum codeEnum, T data) {
-        if (codeEnum == null) {
+    public static <T> ApiResponse<T> failure(ApiCodeEnum apiCodeEnum, T data) {
+        if (apiCodeEnum == null) {
             return new ApiResponse<T>(ApiCodeEnum.FAIL, null);
         }
-        return new ApiResponse<T>(codeEnum, data);
+        return new ApiResponse<T>(apiCodeEnum, data);
     }
 }

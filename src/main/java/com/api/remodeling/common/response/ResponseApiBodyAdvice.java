@@ -1,6 +1,7 @@
 package com.api.remodeling.common.response;
 
 import com.api.remodeling.common.api.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;
 import org.springframework.http.MediaType;
@@ -18,6 +19,7 @@ import java.lang.annotation.Annotation;
  * @author jingLv
  * @date 2020/09/16
  */
+@Slf4j
 @RestControllerAdvice
 public class ResponseApiBodyAdvice implements ResponseBodyAdvice<Object> {
     private static final Class<? extends Annotation> ANNOTATION_TYPE = ResponseApiBody.class;
@@ -41,4 +43,5 @@ public class ResponseApiBodyAdvice implements ResponseBodyAdvice<Object> {
         }
         return ApiResponse.success(o);
     }
+
 }

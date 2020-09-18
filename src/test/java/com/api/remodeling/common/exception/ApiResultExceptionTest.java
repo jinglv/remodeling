@@ -11,9 +11,22 @@ import org.junit.jupiter.api.Test;
 class ApiResultExceptionTest {
     private static final ApiCodeEnum TEST_CODE = ApiCodeEnum.ILLEGAL_ARGUMENT;
 
+    /**
+     * public ApiResultException()
+     */
     @Test
-    void getApiCodeEnum() {
+    void getCodeNoArgs() {
         ApiResultException apiResultException = new ApiResultException();
         Assertions.assertEquals(ApiCodeEnum.FAIL, apiResultException.getApiCodeEnum());
+    }
+
+    /**
+     * public ApiResultException(ApiCodeEnum apiCodeEnum)
+     */
+    @Test
+    void getCodeWithCode() {
+        ApiResultException apiResultException = new ApiResultException(TEST_CODE);
+        Assertions.assertEquals(TEST_CODE, apiResultException.getApiCodeEnum());
+        Assertions.assertEquals(TEST_CODE.getMessage(), apiResultException.getMessage());
     }
 }

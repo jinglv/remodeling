@@ -24,3 +24,20 @@
 主要参考了：`org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleException()`
 
 参考地址：https://github.com/galaxy-sea/galaxy-blogs/tree/master/code/responseResult
+
+## knife4j的配置
+knife4j是Swagger的升级版
+
+官方网站：https://doc.xiaominfo.com/guide/useful.html#java开发
+
+Maven pom.xml引入依赖
+```xml
+<dependency>
+    <groupId>com.github.xiaoymin</groupId>
+    <artifactId>knife4j-spring-boot-starter</artifactId>
+    <version>${knife4j.version}</version>
+</dependency>
+```
+创建配置类SwaggerConfiguration.java
+
+## 登录功能

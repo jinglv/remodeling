@@ -1,3 +1,18 @@
 -- 创建数据库remodeling
-drop database if exists `test-pro`;
-create database `test-pro` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+DROP DATABASE IF EXISTS `remodeling`;
+CREATE DATABASE `remodeling` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+
+-- 创建数据表：users
+DROP TABLE IF EXISTS users;
+CREATE TABLE users
+(
+    id          BIGINT UNSIGNED AUTO_INCREMENT COMMENT '主键' PRIMARY KEY,
+    user_name   VARCHAR(32) DEFAULT NULL COMMENT '用户名',
+    pass_word   VARCHAR(32) DEFAULT NULL COMMENT '密码',
+    gender      VARCHAR(64) DEFAULT 'UNKNOWN'         NOT NULL COMMENT '性别 MALE:男,FEMALE:女,UNKNOWN:未知',
+    nick_name   VARCHAR(32) DEFAULT NULL,
+    create_time DATETIME    DEFAULT CURRENT_TIMESTAMP NOT NULL COMMENT '创建时间',
+    update_time TIMESTAMP   DEFAULT CURRENT_TIMESTAMP NOT NULL ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间'
+) ENGINE = InnoDB
+  AUTO_INCREMENT = 1
+  DEFAULT CHARSET = utf8 COMMENT '用户表';

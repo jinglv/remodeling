@@ -1,6 +1,8 @@
 package com.api.remodeling.controller;
 
+import cn.hutool.json.JSONUtil;
 import com.api.remodeling.common.api.ApiResponse;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +17,7 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/hello")
+@Slf4j
 public class HelloController {
     private static final HashMap<String, Object> INFO;
 
@@ -26,6 +29,7 @@ public class HelloController {
 
     @GetMapping("/hello")
     public Map<String, Object> hello() {
+        log.info("输出返回内容{}", JSONUtil.toJsonStr(INFO));
         return INFO;
     }
 

@@ -1,9 +1,16 @@
 server:
+  port: 8888
   servlet:
     context-path: /reodeling
+
 spring:
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/remodeing
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/remodeing?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123123
+
+# 日志配置
+logging:
+  pattern:
+    console: "%d - %msg%n"

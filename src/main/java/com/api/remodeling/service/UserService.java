@@ -1,6 +1,6 @@
 package com.api.remodeling.service;
 
-import com.api.remodeling.common.entity.User;
+import com.api.remodeling.entity.User;
 import com.baomidou.mybatisplus.service.IService;
 
 /**

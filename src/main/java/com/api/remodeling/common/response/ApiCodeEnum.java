@@ -1,4 +1,4 @@
-package com.api.remodeling.common.api;
+package com.api.remodeling.common.response;
 
 import lombok.Getter;
 

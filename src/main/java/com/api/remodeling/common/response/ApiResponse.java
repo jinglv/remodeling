@@ -1,4 +1,4 @@
-package com.api.remodeling.common.api;
+package com.api.remodeling.common.response;
 
 import lombok.Getter;
 import lombok.ToString;
@@ -15,15 +15,15 @@ public class ApiResponse<T> {
     /**
      * 响应编码
      */
-    private String code;
+    private final String code;
     /**
      * 响应描述
      */
-    private String message;
+    private final String message;
     /**
      * 返回数据
      */
-    private T data;
+    private final T data;
 
     /**
      * 构造函数
@@ -41,14 +41,14 @@ public class ApiResponse<T> {
      * 业务成功返回代码和描述信息
      */
     public static ApiResponse<Void> success() {
-        return new ApiResponse<Void>(ApiCodeEnum.SUCCESS, null);
+        return new ApiResponse<>(ApiCodeEnum.SUCCESS, null);
     }
 
     /**
      * 业务成功返回代码,描述和返回参数
      */
     public static <T> ApiResponse<T> success(T data) {
-        return new ApiResponse<T>(ApiCodeEnum.SUCCESS, data);
+        return new ApiResponse<>(ApiCodeEnum.SUCCESS, data);
     }
 
     /**
@@ -58,14 +58,14 @@ public class ApiResponse<T> {
         if (apiCodeEnum == null) {
             return success(data);
         }
-        return new ApiResponse<T>(ApiCodeEnum.SUCCESS, data);
+        return new ApiResponse<>(ApiCodeEnum.SUCCESS, data);
     }
 
     /**
      * 业务异常返回代码和描述信息
      */
     public static <T> ApiResponse<T> failure() {
-        return new ApiResponse<T>(ApiCodeEnum.FAIL, null);
+        return new ApiResponse<>(ApiCodeEnum.FAIL, null);
     }
 
     /**
@@ -80,8 +80,8 @@ public class ApiResponse<T> {
      */
     public static <T> ApiResponse<T> failure(ApiCodeEnum apiCodeEnum, T data) {
         if (apiCodeEnum == null) {
-            return new ApiResponse<T>(ApiCodeEnum.FAIL, null);
+            return new ApiResponse<>(ApiCodeEnum.FAIL, null);
         }
-        return new ApiResponse<T>(apiCodeEnum, data);
+        return new ApiResponse<>(apiCodeEnum, data);
     }
 }

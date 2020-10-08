@@ -1,4 +1,4 @@
-package com.api.remodeling.common.entity;
+package com.api.remodeling.entity;
 
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;

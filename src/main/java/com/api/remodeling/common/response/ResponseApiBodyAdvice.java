@@ -1,6 +1,5 @@
 package com.api.remodeling.common.response;
 
-import com.api.remodeling.common.api.ApiResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.MethodParameter;
 import org.springframework.core.annotation.AnnotatedElementUtils;

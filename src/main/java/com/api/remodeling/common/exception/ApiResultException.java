@@ -1,6 +1,6 @@
 package com.api.remodeling.common.exception;
 
-import com.api.remodeling.common.api.ApiCodeEnum;
+import com.api.remodeling.common.response.ApiCodeEnum;
 import lombok.Getter;
 
 /**

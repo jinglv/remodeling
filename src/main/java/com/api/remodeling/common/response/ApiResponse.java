@@ -1,5 +1,7 @@
 package com.api.remodeling.common.response;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -11,18 +13,22 @@ import lombok.ToString;
  */
 @Getter
 @ToString
+@ApiModel(description = "API接口统一JSON格式返回")
 public class ApiResponse<T> {
     /**
      * 响应编码
      */
+    @ApiModelProperty(value = "响应编码", example = "00000 or 00001", notes = "响应编码")
     private final String code;
     /**
      * 响应描述
      */
+    @ApiModelProperty(value = "响应描述", example = "ok or fail", notes = "响应描述")
     private final String message;
     /**
      * 返回数据
      */
+    @ApiModelProperty(value = "json", example = "", notes = "响应对象")
     private final T data;
 
     /**

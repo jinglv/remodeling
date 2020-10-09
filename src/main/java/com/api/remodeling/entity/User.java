@@ -1,8 +1,6 @@
 package com.api.remodeling.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -19,7 +17,7 @@ import java.util.Date;
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "User对象", description = "")
+@ApiModel(value = "用户信息", description = "用户信息")
 public class User {
     private static final long serialVersionUID = 1L;
 
@@ -34,6 +32,8 @@ public class User {
     private String password;
 
     @ApiModelProperty(value = "注册时间")
-    @TableField(fill = FieldFill.INSERT)
-    private Date regtime;
+    private Date registerTime;
+
+    @ApiModelProperty(value = "创建时间")
+    private Date createTime;
 }

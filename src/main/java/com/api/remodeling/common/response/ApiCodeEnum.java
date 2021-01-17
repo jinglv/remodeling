@@ -21,10 +21,10 @@ public enum ApiCodeEnum {
     /**
      * 失败
      */
-    FAIL("00001", "失败"),
+    FAIL("00001", "fail"),
 
     /**
-     *
+     * 重复请求
      */
     REPEAT("00010", "重复请求");
 

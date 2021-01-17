@@ -2,11 +2,23 @@ server:
   port: 8089
 
 spring:
+  # 数据源配置
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/remodeling?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
     username: root
     password: 123123
+
+# mybatis配置
+mybatis:
+  #mapper文件加载路径
+  mapper-locations: mapper/*.xml
+  #别名对应的实体对象扫描路径
+  type-aliases-package: com.api.remodeling.entity
+  loggin:
+    level:
+      root: info
+      com.api.remodeling.mapper: trace
 
 # 日志配置
 logging:

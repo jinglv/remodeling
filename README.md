@@ -40,6 +40,9 @@ Maven pom.xml引入依赖
 
 ## 日志配置
 
+## MyBatis-Plus使用
+
+
 
 ## 登录功能
 安全认证框架：shiro

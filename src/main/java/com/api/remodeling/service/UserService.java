@@ -1,11 +1,16 @@
 package com.api.remodeling.service;
 
 import com.api.remodeling.entity.User;
-import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
+ * <p>
+ * 用户表 服务类
+ * </p>
+ *
  * @author jinglv
- * @date 2020/09/19
+ * @since 2021-01-17
  */
 public interface UserService extends IService<User> {
+
 }

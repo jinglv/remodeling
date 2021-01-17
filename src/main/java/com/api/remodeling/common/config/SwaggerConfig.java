@@ -21,7 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
-public class SwaggerConfiguration {
+public class SwaggerConfig {
     /**
      * 默认API，包括controller下的所有的类
      *

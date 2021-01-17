@@ -1,39 +1,76 @@
 package com.api.remodeling.entity;
 
-import com.baomidou.mybatisplus.annotation.FieldFill;
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.*;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.time.LocalDateTime;
 
 /**
+ * <p>
+ * 用户表
+ * </p>
+ *
  * @author jinglv
- * @date 2020/09/19
+ * @since 2021-01-17
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
-@ApiModel(value = "User对象", description = "")
-public class User {
+@TableName("test_user")
+@ApiModel(value = "User对象", description = "User对象")
+public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
-    @ApiModelProperty(value = "用户编号（主键）")
+    /**
+     * 主键
+     */
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
+    /**
+     * 用户名
+     */
     @ApiModelProperty(value = "用户名")
+    @TableField("user_name")
     private String username;
 
+    /**
+     * 密码
+     */
     @ApiModelProperty(value = "密码")
+    @TableField("pass_word")
     private String password;
 
+    /**
+     * 邮箱
+     */
+    @ApiModelProperty(value = "邮箱")
+    private String email;
+
+    /**
+     * 创建时间
+     */
     @ApiModelProperty(value = "注册时间")
-    @TableField(fill = FieldFill.INSERT)
-    private Date regtime;
+    @TableField(value = "register_time", fill = FieldFill.INSERT)
+    private LocalDateTime registerTime;
+
+    /**
+     * 创建时间
+     */
+    @TableField("create_time")
+    private LocalDateTime createTime;
+
+    /**
+     * 更新时间
+     */
+    @TableField("update_time")
+    private LocalDateTime updateTime;
+
+
 }

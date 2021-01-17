@@ -1,6 +1,6 @@
 package com.api.remodeling.common.exception;
 
-import com.api.remodeling.common.api.ApiCodeEnum;
+import com.api.remodeling.common.response.ApiCodeEnum;
 import lombok.Getter;
 
 /**
@@ -9,17 +9,34 @@ import lombok.Getter;
  */
 @Getter
 public class ApiResultException extends Exception {
-    /**
-     * 业务异常信息
-     */
-    ApiCodeEnum apiCodeEnum;
+    private final String code;
 
     public ApiResultException() {
-        this(ApiCodeEnum.FAIL);
+        super();
+        this.code = ApiCodeEnum.FAIL.getCode();
     }
 
-    public ApiResultException(ApiCodeEnum apiCodeEnum) {
-        super(apiCodeEnum.getMessage());
-        this.apiCodeEnum = apiCodeEnum;
+    public ApiResultException(String message) {
+        super(message);
+        this.code = ApiCodeEnum.FAIL.getCode();
+    }
+
+    public ApiResultException(Throwable cause) {
+        super(cause);
+        this.code = ApiCodeEnum.FAIL.getCode();
+    }
+
+    public ApiResultException(String message, Throwable cause) {
+        super(message, cause);
+        this.code = ApiCodeEnum.FAIL.getCode();
+    }
+
+    public ApiResultException(String code, String message) {
+        this(code, message, null);
+    }
+
+    public ApiResultException(String code, String message, Throwable cause) {
+        super(message, cause);
+        this.code = code;
     }
 }

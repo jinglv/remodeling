@@ -1,9 +1,7 @@
 # remodeling
 测试平台的搭建
 
-
 ## API接口统一JSON格式返回
-
 1. 定义API接口返回的JSON格式
 2. 定义API接口状态码枚举值
 3. 定义API返回体类
@@ -24,3 +22,31 @@
 主要参考了：`org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleException()`
 
 参考地址：https://github.com/galaxy-sea/galaxy-blogs/tree/master/code/responseResult
+
+## knife4j的配置
+knife4j是Swagger的升级版
+
+官方网站：https://doc.xiaominfo.com/guide/useful.html#java开发
+
+Maven pom.xml引入依赖
+```xml
+<dependency>
+    <groupId>com.github.xiaoymin</groupId>
+    <artifactId>knife4j-spring-boot-starter</artifactId>
+    <version>${knife4j.version}</version>
+</dependency>
+```
+创建配置类SwaggerConfiguration.java
+
+## 日志配置
+
+## MyBatis-Plus使用
+
+
+
+## 登录功能
+安全认证框架：shiro
+
+Apache shiro是一个强大且易用的Java安全框架，执行身份验证、授权、密码和会话管理
+
+三个核心组件：Subject,SecurityManager和Realms

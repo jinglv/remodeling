@@ -27,8 +27,8 @@ CREATE TABLE `test_project`
     `host_name`    VARCHAR(225) DEFAULT NULL COMMENT '主机地址',
     `description`  VARCHAR(225) DEFAULT NULL COMMENT '描述',
     `create_user`  VARCHAR(50)  DEFAULT NULL COMMENT '创建人',
-    `create_time`  DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time`  DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time`  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`  TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
@@ -43,12 +43,12 @@ CREATE TABLE `test_case`
     `suite_id`    INT         NOT NULL COMMENT '测试套件id',
     `case_name`   VARCHAR(50) NOT NULL COMMENT '测试用例名称',
     `create_user` VARCHAR(50) DEFAULT NULL COMMENT '创建人',
-    `create_time` DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time` DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试用例表';
 
 # test_case_param_value 测试用例参数表
@@ -60,12 +60,12 @@ CREATE TABLE `test_case_param_value`
     `api_request_param_id`    INT          NOT NULL COMMENT '关联的接口参数字段id',
     `api_request_param_value` VARCHAR(225) NOT NULL COMMENT '给参数字段准备的测试数据',
     `create_user`             VARCHAR(50) DEFAULT NULL COMMENT '创建人',
-    `create_time`             DATETIME     NOT NULL COMMENT '创建时间',
-    `update_time`             DATETIME     NOT NULL COMMENT '更新时间',
+    `create_time`             TIMESTAMP   DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`             TIMESTAMP   DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试用例参数表';
 
 # test_host HOST表
@@ -77,12 +77,12 @@ CREATE TABLE `test_host`
     `host_name`   VARCHAR(50) NOT NULL COMMENT 'host地址名',
     `description` VARCHAR(225) DEFAULT NULL COMMENT '描述',
     `create_user` VARCHAR(50)  DEFAULT NULL COMMENT '创建人',
-    `create_time` DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time` DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='HOST表';
 
 # test_suite 测试套件表
@@ -94,12 +94,12 @@ CREATE TABLE `test_suite`
     `suite_name`  VARCHAR(50) NOT NULL COMMENT '测试套件名称',
     `description` VARCHAR(225) DEFAULT NULL COMMENT '描述',
     `create_user` VARCHAR(50)  DEFAULT NULL COMMENT '创建人',
-    `create_time` DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time` DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试套件表';
 
 # test_api 测试接口表
@@ -113,8 +113,8 @@ CREATE TABLE `test_api`
     `api_url`               VARCHAR(225) DEFAULT NULL COMMENT '接口请求地址',
     `description`           VARCHAR(225) DEFAULT NULL COMMENT '描述',
     `create_user`           VARCHAR(50)  DEFAULT NULL COMMENT '创建人',
-    `create_time`           DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time`           DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time`           TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`           TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
@@ -130,12 +130,12 @@ CREATE TABLE `test_api_classification`
     `api_classification_name` VARCHAR(50) NOT NULL COMMENT '接口分类名称',
     `description`             VARCHAR(225) DEFAULT NULL COMMENT '描述',
     `create_user`             VARCHAR(50)  DEFAULT NULL COMMENT '创建人',
-    `create_time`             DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time`             DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time`             TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`             TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试接口分类表';
 
 # test_api_request_param 测试接口请求参数表
@@ -149,12 +149,12 @@ CREATE TABLE `test_api_request_param`
     `api_type`       VARCHAR(50) NOT NULL COMMENT '参数类型（1：query参数；2：body参数；3：header；4：body里的json参数）',
     `example_data`   VARCHAR(50) NOT NULL COMMENT '接口参数示例',
     `description`    VARCHAR(225) DEFAULT NULL COMMENT '描述',
-    `create_time`    DATETIME    NOT NULL COMMENT '创建时间',
-    `update_time`    DATETIME    NOT NULL COMMENT '更新时间',
+    `create_time`    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`    TIMESTAMP    DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试接口请求参数表';
 
 # test_rule 测试规则表
@@ -168,12 +168,12 @@ CREATE TABLE `test_rule`
     `operator`    VARCHAR(225) NOT NULL COMMENT '匹配规则',
     `expected`    VARCHAR(225) NOT NULL COMMENT '期望值',
     `create_user` VARCHAR(50) DEFAULT NULL COMMENT '创建人',
-    `create_time` DATETIME     NOT NULL COMMENT '创建时间',
-    `update_time` DATETIME     NOT NULL COMMENT '更新时间',
+    `create_time` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time` TIMESTAMP   DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试规则表';
 
 # test_report 测试报告表
@@ -188,10 +188,10 @@ CREATE TABLE `test_report`
     `response_headers` VARCHAR(225) NOT NULL COMMENT '响应头信息',
     `response_body`    VARCHAR(225) NOT NULL COMMENT '响应主体数据',
     `result`           VARCHAR(50)  NOT NULL COMMENT '测试结果',
-    `create_time`      DATETIME     NOT NULL COMMENT '创建时间',
-    `update_time`      DATETIME     NOT NULL COMMENT '更新时间',
+    `create_time`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+    `update_time`      TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT '更新时间',
     PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 12
-  DEFAULT CHARSET = utf8
+  DEFAULT CHARSET = utf8mb4
   ROW_FORMAT = DYNAMIC COMMENT ='测试报告表';

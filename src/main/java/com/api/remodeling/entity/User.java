@@ -54,6 +54,12 @@ public class User implements Serializable {
     private String email;
 
     /**
+     * 随机盐
+     */
+    @ApiModelProperty(value = "随机盐")
+    private String salt;
+
+    /**
      * 创建时间
      */
     @ApiModelProperty(value = "注册时间")

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
+ * 统一异常增强使用
+ *
  * @author jinglv
  * @date 2021/01/17
  */
@@ -21,8 +23,8 @@ public class ExceptionInterceptor {
     /**
      * 拦截业务类异常
      *
-     * @param e
-     * @return
+     * @param e ApiResultException
+     * @return 返回异常结果
      */
     @ResponseBody
     @ExceptionHandler(ApiResultException.class)
@@ -34,8 +36,8 @@ public class ExceptionInterceptor {
     /**
      * 拦截运行类异常
      *
-     * @param e
-     * @return
+     * @param e RuntimeException
+     * @return 返回异常结果
      */
     @ResponseBody
     @ExceptionHandler(RuntimeException.class)
@@ -47,8 +49,8 @@ public class ExceptionInterceptor {
     /**
      * 拦截类Throwable异常
      *
-     * @param th
-     * @return
+     * @param th Throwable
+     * @return 返回异常结果
      */
     @ResponseBody
     @ExceptionHandler(value = Throwable.class)

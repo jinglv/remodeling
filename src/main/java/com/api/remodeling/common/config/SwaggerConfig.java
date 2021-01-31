@@ -3,11 +3,11 @@ package com.api.remodeling.common.config;
 import com.github.xiaoymin.knife4j.spring.annotations.EnableKnife4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
+import springfox.bean.validators.configuration.BeanValidatorPluginsConfiguration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.Contact;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
@@ -21,6 +21,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 @EnableSwagger2
 @EnableKnife4j
+@Import(BeanValidatorPluginsConfiguration.class)
 public class SwaggerConfig {
     /**
      * 默认API，包括controller下的所有的类
@@ -28,28 +29,21 @@ public class SwaggerConfig {
      * @return 文档信息
      */
     @Bean(value = "defaultApi2")
-    public Docket createRestApi() {
-        return new Docket(DocumentationType.SWAGGER_2)
-                .useDefaultResponseMessages(false)
-                .apiInfo(apiInfo())
+    public Docket defaultApi2() {
+        Docket docket = new Docket(DocumentationType.SWAGGER_2)
+                .apiInfo(new ApiInfoBuilder()
+                        .version("1.0")
+                        .title("用户中心")
+                        .description("<div style='font-size:15px;color:red;'>用户中心 RESTful APIs</div>")
+                        .build())
+                //分组名称
+                .groupName("2.X版本")
                 .select()
+                //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.api.remodeling.controller"))
                 .paths(PathSelectors.any())
                 .build();
+        return docket;
     }
 
-    /**
-     * 获取api信息
-     *
-     * @return api的介绍信息
-     */
-    private ApiInfo apiInfo() {
-        return new ApiInfoBuilder()
-                .title("Remodeling的接口文档")
-                .description("接口文档")
-                .termsOfServiceUrl("http://xxx:8888/doc.html")
-                .contact(new Contact("Jing", null, "xxxx@email.com"))
-                .version("1.0")
-                .build();
-    }
 }

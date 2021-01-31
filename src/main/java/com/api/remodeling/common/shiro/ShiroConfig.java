@@ -1,6 +1,7 @@
 package com.api.remodeling.common.shiro;
 
 
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.mgt.SessionManager;
 import org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO;
@@ -29,7 +30,11 @@ public class ShiroConfig {
         // 拦截器.
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         // 配置不会被拦截的链接 顺序判断
-
+        filterChainDefinitionMap.put("/doc.html", "anon");
+        filterChainDefinitionMap.put("/webjars/**", "anon");
+        filterChainDefinitionMap.put("/swagger-ui.html", "anon");
+        filterChainDefinitionMap.put("/swagger-resources/**", "anon");
+        filterChainDefinitionMap.put("/v2/api-docs", "anon");
         filterChainDefinitionMap.put("/user/login", "anon");
         filterChainDefinitionMap.put("/user/find", "anon");
         filterChainDefinitionMap.put("/user/register", "anon");
@@ -51,16 +56,30 @@ public class ShiroConfig {
      */
     @Bean
     public RemodelingRealm remodelingRealm() {
-        return new RemodelingRealm();
+        RemodelingRealm remodelingRealm = new RemodelingRealm();
+        // 修改凭证校验匹配器
+        HashedCredentialsMatcher credentialsMatcher = new HashedCredentialsMatcher();
+        // 设置加密算法md5
+        credentialsMatcher.setHashAlgorithmName("MD5");
+        // 设置散列次数
+        credentialsMatcher.setHashIterations(1024);
+        remodelingRealm.setCredentialsMatcher(credentialsMatcher);
+        return remodelingRealm;
     }
 
+    /**
+     * 安全管理器
+     *
+     * @param myRealm
+     * @return
+     */
     @Bean
-    public SecurityManager securityManager(RemodelingRealm myReal) {
+    public SecurityManager securityManager(RemodelingRealm myRealm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         //自定义session管理
         securityManager.setSessionManager(sessionManager());
         // 设置realm
-        securityManager.setRealm(myReal);
+        securityManager.setRealm(myRealm);
         return securityManager;
     }
 

@@ -17,10 +17,6 @@
 
 但是，完成以上优化确实完成了接口统一JSON格式的返回，但是对于请求异常的情况并没有进行异常返回的统一处理
 
-### 异常处理（`@ExceptionHandler`）
-
-主要参考了：`org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler#handleException()`
-
 参考地址：https://github.com/galaxy-sea/galaxy-blogs/tree/master/code/responseResult
 
 ## knife4j的配置
@@ -38,11 +34,7 @@ Maven pom.xml引入依赖
 ```
 创建配置类SwaggerConfiguration.java
 
-## 日志配置
-
 ## MyBatis-Plus使用
-
-
 
 ## 登录功能
 安全认证框架：shiro

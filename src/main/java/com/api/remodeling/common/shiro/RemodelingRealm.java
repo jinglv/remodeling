@@ -2,7 +2,6 @@ package com.api.remodeling.common.shiro;
 
 import com.api.remodeling.entity.User;
 import com.api.remodeling.service.UserService;
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -11,7 +10,9 @@ import org.apache.shiro.authc.SimpleAuthenticationInfo;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.ObjectUtils;
 
 /**
  * 自定义realm
@@ -45,12 +46,10 @@ public class RemodelingRealm extends AuthorizingRealm {
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         // 认证逻辑
-        String username = authenticationToken.getPrincipal().toString();
-        QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("user_name", username);
-        User dbUser = userService.getOne(queryWrapper);
-        if (dbUser != null) {
-            return new SimpleAuthenticationInfo(dbUser, dbUser.getPassword(), getName());
+        String username = (String) authenticationToken.getPrincipal();
+        User user = userService.findByUserName(username);
+        if (!ObjectUtils.isEmpty(user)) {
+            return new SimpleAuthenticationInfo(user.getUsername(), user.getPassword(), ByteSource.Util.bytes(user.getSalt()), this.getName());
         } else {
             log.error("token为空！");
         }

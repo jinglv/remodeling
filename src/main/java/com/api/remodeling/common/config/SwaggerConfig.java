@@ -33,11 +33,11 @@ public class SwaggerConfig {
         Docket docket = new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(new ApiInfoBuilder()
                         .version("1.0")
-                        .title("用户中心")
-                        .description("<div style='font-size:15px;color:red;'>用户中心 RESTful APIs</div>")
+                        .title("测试平台")
+                        .description("<div style='font-size:15px;color:red;'>测试平台 RESTFul APIs</div>")
                         .build())
                 //分组名称
-                .groupName("2.X版本")
+                .groupName("1.0版本")
                 .select()
                 //这里指定Controller扫描包路径
                 .apis(RequestHandlerSelectors.basePackage("com.api.remodeling.controller"))

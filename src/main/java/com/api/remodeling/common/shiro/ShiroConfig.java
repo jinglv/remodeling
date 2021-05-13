@@ -22,6 +22,12 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
 
+    /**
+     * Shiro过滤器，配置访问地址，拦截与被拦截的
+     *
+     * @param securityManager 安全管理器
+     * @return 返回过滤完成的对象
+     */
     @Bean
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
 

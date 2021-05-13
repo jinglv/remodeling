@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * <p>
@@ -29,7 +30,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         this.userMapper = userMapper;
     }
 
+    /**
+     * 用户注册
+     *
+     * @param user 注册时的用户信息
+     * @return 返回接口结果
+     */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public ResultVo register(User user) {
         // 处理业务调用DAO
         // 1.生成随机盐
@@ -38,6 +46,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         user.setSalt(salt);
         // 3.明文密码进行 md5+salt+hash散列
         Md5Hash md5Hash = new Md5Hash(user.getPassword(), salt, 1024);
+        // 将加密后的密码赋值给User用户对象
         user.setPassword(md5Hash.toHex());
         // 保存到数据库中
         int insertNumber = userMapper.insert(user);

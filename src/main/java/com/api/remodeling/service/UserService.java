@@ -17,7 +17,8 @@ public interface UserService extends IService<User> {
     /**
      * 用户注册
      *
-     * @param user 用户信息
+     * @param user 注册时的用户信息
+     * @return 返回接口结果
      */
     ResultVo register(User user);
 

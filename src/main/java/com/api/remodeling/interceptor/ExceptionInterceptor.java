@@ -1,4 +1,4 @@
-package com.api.remodeling.Interceptor;
+package com.api.remodeling.interceptor;
 
 import com.api.remodeling.common.exception.ApiResultException;
 import com.api.remodeling.common.response.ApiCodeEnum;
